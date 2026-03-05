@@ -21,7 +21,7 @@ This project explores how much a lottery winner may walk away with after the lum
 import matplotlib.pyplot as plt
 from state_taxes import lottery_tax_rates
 import os
-os.environ['QT_LOGGING_RULES'] = '*.debug=false;qt.qpa.*=false'
+os.environ['QT_LOGGING_RULES'] = '*.debug=false;qt.qpa.*=false' #used to remove error message after Lottery Payout Message in Program
 
 # Define lottery calculation parameters
 def calculate_lottery_payments(jackpot, state_tax):
@@ -31,12 +31,6 @@ def calculate_lottery_payments(jackpot, state_tax):
     federal_withholding = lump_sum * federal_withholding_percentage
     state_witholding = lump_sum * state_tax
     return lump_sum - federal_withholding - state_witholding
-
-# Custom autopct to prevent rounding errors
-def make_autopct(values):
-    def autopct(pct):
-        return f'{pct:.1f}%'
-    return autopct
 
 # Program execution
 
@@ -76,6 +70,7 @@ lump_sum = 0.4725
 federal_tax = 0.37
 
 l = j * lump_sum
+lump_sum_discount = j - l
 f = l * federal_tax
 st = l * s
 
@@ -93,17 +88,20 @@ print(f"""
 
 print('=' * 63)
 
-# Output Visual of Lottery Calculation Breakdowns
+# Output Visual of Lottery Calculator Output
 
-# Pie chart data
-lump_sum_discount = j - l
+# Custom autopct to prevent rounding errors
+def make_autopct(values):
+    def autopct(pct):
+        return f'{pct:.1f}%'
+    return autopct
 
 labels     = ['Lump Sum Discount', 'Federal Tax', 'State Tax', 'Winnings after Tax']
 categories = [lump_sum_discount, f, st, payout]
 colors     = ['#7A9EB5','#A8BFC9','#B0B0B0','#000080']
 
 # Filter out zero-value slices (e.g. states with 0% tax)
-filtered = [(la, ca, co) for la, ca, co in zip(labels, categories, colors) if ca > 0]
+filtered = [(la, ca, co) for la, ca, co in zip(labels, categories, colors) if ca > 0] #combine the different iterables into a single iterator of tuples
 labels_f, categories_f, colors_f = zip(*filtered)
 
 # Dynamic explode — only pops the Winnings after Tax slice
