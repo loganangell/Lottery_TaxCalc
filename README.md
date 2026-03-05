@@ -5,7 +5,7 @@ Since I was 18 years old, I have enjoyed testing my luck at playing the lottery.
 
 ## Background
 
-This project explores how much a lottery winner may walk away with after the lump sum and taxes are taken out. By using Python to estimate the lump sum, federal taxes, and state taxes of lottery winnings, the projram will provide valuable insights into actual earnings to help illustrate the importance of financial awareness and planning.
+This project explores how much a lottery winner may walk away with after the lump sum and taxes are taken out. By using Python to estimate the lump sum, federal taxes, and state taxes of lottery winnings, the program will provide valuable insights into actual earnings to help illustrate the importance of financial awareness and planning.
 
 ## Tools I Used
 
@@ -150,3 +150,4 @@ Future improvements to this project may include:
 * Displaying visual breakdowns on lump-sum amounts, taxes, and other additional expenses (e.g. legal or advisory fees)
 * Generating an annuity payment schedule for users that would like to see thier installment-based payouts
 * Incorporating real-time API connections to display up-to-date lottery jackpots and tax rates for accurate, real-world analyses
+
